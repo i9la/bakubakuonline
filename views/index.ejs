@@ -1,0 +1,103 @@
+<!doctype html>
+<html><head>
+<meta name="viewport"content="width=480,initial-scale=0.5,ninimum-scale=0.5,maximum-scale=0.5">
+<title>Welcome Baku Baku Online</title>
+<!--[if IE]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script src="http://i9la.com/js/jq172.js"></script>
+<!--script src="/socket.io/socket.io.js"></script-->
+<!--script src="/js/socketclient.js"></script--> 
+<script type="text/javascript">
+/*////////////////////////////////////////////////////////*/
+/*                    jvascript here                      */
+/*////////////////////////////////////////////////////////*/
+//var getId = document.getElementById("fb_id");
+</script>
+<style type="text/css">
+  button {
+    color:white;
+    font-size:200%;
+    background-color:#ffa4a4;
+    border-radius:12px;
+    border:solid gray;
+    height:64px;
+    vertical-align:middle;
+    margin:4px 4px 4px 0px;
+  }
+  button:hover{
+    color:white;
+    background-color:gray;
+  }
+</style>
+</head><body>
+
+<div id="title">
+<!--h2>Baku Baku Online</h2-->
+  <!--p><%= msg %></p-->
+  <!-- Facebook Ninsho -->
+  <div id="fb-root"></div> 
+  <script src="/js/facebookninshou.js"></script>
+
+  <div id="login" style="display : none;"></div>
+
+  <div id="not_login" style="display : none;">
+    <p><a id="login_button" class="fb_button fb_button_xlarge">
+    <span class="fb_button_text">Login with Facebook</span>
+    </a></p>
+  </div>
+
+  <div id ="game_login" style="display : none;">
+    <form action="/login" method="GET">
+    <input type='hidden'id='fb_id'name='fb_id'value=''>
+    <input type='hidden'id='f_name'name='f_name'value=''>
+    <button type='submit'id='isapp'name='isapp'value='true'>
+    LOGIN</button>
+    </form>
+  </div>
+</div>
+
+<style>
+  #title{
+  width:640px;
+  height:740px;
+  background:#fff url(https://lh3.googleusercontent.com/-k19_AgU1nNg/UGoUeEh0LpI/AAAAAAAAEok/WUVZlJ2Oq-I/s740/title2.png);
+}
+#login{ /* this is welcome text*/
+  color:#0000FF;
+  font-size:140%;
+  position:absolute;
+  top:400px;
+  left:230px;
+
+}
+#game_login{
+  position:absolute;
+  top:456px;
+  left:236px;  
+}
+#not_login{
+  position:absolute;
+  top:440px;
+  left:170px;
+}
+#message{
+  position:absolute;
+  top:300px;
+  left:300px;
+}
+</style>
+<!--/div-->
+<!-- Facebook Ninsho -->
+</body>
+</html>
+<!--
+k
+a
+i
+h
+a
+t
+s
+u
+-->

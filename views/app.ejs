@@ -1,0 +1,167 @@
+<!doctype html>
+<html><head>
+<meta name="viewport" content="width=480, initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5">    
+<title>Baku Baku Online</title>
+<!--[if IE]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+<script src="js/v0.0.2.js"></script>
+<script src="js/datascheme.js"></script>
+<script src="socket.io/socket.io.js"></script>
+<script src="/js/socketclient.js"></script>
+<script src="/js/sprites3.js"></script>
+<script src="/js/tools.js"></script>
+<style type="text/css">
+#upbutton{
+  position:absolute;
+  top:372px;left:274px;width:100px;height:100px;/*border:4px solid gray;*/
+  vertical-align:middle;text-align:center;line-height:90px;
+}
+#leftbutton{
+  position:absolute;
+  top:484px;left:162px;width:100px;height:100px;/*border:4px solid gray;*/
+  vertical-align:middle;text-align:center;line-height:90px;
+}
+#firebutton{
+  position:absolute;
+  top:484px;left:274px;width:100px;height:100px/*;border:4px solid gray;*/
+  vertical-align:middle;text-align:center;line-height:90px;
+}
+#rightbutton{
+  position:absolute;
+  top:484px;left:386px;width:100px;height:100px;/*border:4px solid gray;*/
+  vertical-align:middle;text-align:center;line-height:90px;
+}
+#downbutton{
+  position:absolute;
+  top:596px;left:274px;width:100px;height:100px;/*border:4px solid gray;*/
+  vertical-align:middle;text-align:center;line-height:90px;
+}
+#draw-target {
+  width:640px;
+  height:740px;
+  background-color: #008000;
+  background-image:url("https://lh3.googleusercontent.com/-ap5B7CX5dfs/UGpEJAe87nI/AAAAAAAAEpc/dPFvm8Pd9EE/s740/back4.png");
+  position:relative;
+}
+#menu{
+  width:640px;
+  height:740px;
+  background-image:url(https://lh3.googleusercontent.com/-k19_AgU1nNg/UGoUeEh0LpI/AAAAAAAAEok/WUVZlJ2Oq-I/s740/title2.png);
+}
+#game_btn{
+  position:absolute;
+  top:456px;
+  left:230px;
+}
+#game_var{
+  color:#593500;
+  position:absolute;
+  top:704px;
+  left:80px;
+}
+button {
+  color:white;
+  font-size:200%;
+  background-color:#ffa4a4;
+  border-radius:12px;
+  border:solid gray;
+  height:64px;
+  vertical-align:middle;
+  margin:4px 4px 4px 0px;
+}
+button:hover{
+    color:white;
+    background-color:gray;
+  }
+</style>
+<script type="text/javascript">
+/*////////////////////////////////////////////////////////*/
+/*                      Game init                         */
+/*////////////////////////////////////////////////////////*/
+/* Get fb_id */
+var fb_id = '<%= fb_id %>';
+var f_name = '<%= f_name %>';
+
+window.addEventListener('load',Init,false);
+
+function Init(){
+  sendFBID(); //send 'snd_fbid'=fb_id
+}
+
+function Init2(){sendFBIDdelete();}
+
+function Init3(){
+  /* Click Testfield */
+  addPacket(); //send new usear
+}
+function checkIsChar(){
+  if(U_POS == -1 || samePos == U_POS){
+    sendFBIDdelete();location.href = '/';}}
+
+/*////////////////////////////////////////////////////////*/
+/*                      Game Loop                         */
+/*////////////////////////////////////////////////////////*/
+var runcount = 0;
+//var runcount2 = 0;
+var samePos;
+var isKey = true;
+var run = function(){
+  setInterval(function(){
+    if(runcount > 90){
+      checkIsChar();
+      runcount = 0;
+      samePos = U_POS;
+    } 
+    //if(runcount2 > 1){
+    isKey = true;
+    //runcount2 = 0;
+    //}
+    runcount += 1;
+    //runcount2 += 1;
+    checkUserState();
+    viewMap();
+    isAlive(); //Send is_alive PK
+  },333);
+};
+run();
+</script></head><body>
+<div id="fb-root"></div>
+<script src="/js/facebookninshou2.js"></script>
+
+<div id='menu'>
+  <!--h2>Menu</h2><h3><%= msg %></h3-->
+  <div id="game_btn"><button onclick="Init3()">GAME START</button></div>
+</div>
+
+<div id='draw-target'style='display:none'></div>
+<button onclick="Init2()">CLOSE GAME</button>
+  
+<table id='controller'style='display:none'><tr>
+  <td id='upbutton'>UP</td>
+  <td id='leftbutton'>LEFT</td><!-- class='mybutton'>left</td-->
+  <td id='firebutton'>FIRE</td>
+  <td id='rightbutton'>RIGHT</td>
+  <td id='downbutton'>DOWN</td>
+  </tr>
+</table>
+  
+<div id='mapdata'style='display:none'>status</div><!--div id='mapdata2'>debug</div-->
+
+<div id='myname'style='display:none'></div><div id='0name'style='display:none'></div>
+<div id='1name'style='display:none'></div><div id='2name'style='display:none'></div>
+<div id='3name'style='display:none'></div><div id='4name'style='display:none'></div>
+<div id='5name'style='display:none'></div>
+<div id="game_var">BAKU BAKU ONLINE V0.7(BETA) LAST UPDATE 2012-09-25</div>
+</body></html>
+<!--
+k
+a
+i
+h
+a
+t
+s
+u
+-->
